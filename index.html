@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Zenmelo Haircut Services - Your Style, Our Passion</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="Premium Barber Shop Template" name="keywords">
+        <meta content="Zenmelo Haircut Services - Where Style Meets Precision" name="description">
+
+        <!-- Favicon -->
+        <link href="img/favicon.ico" rel="icon">
+
+        <!-- Google Font -->
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+        <!-- CSS Libraries -->
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+        <link href="lib/animate/animate.min.css" rel="stylesheet">
+        <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+        <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+        <!-- Template Stylesheet -->
+        <link href="css/style.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <!-- Top Bar Start -->
+        <div class="top-bar d-none d-md-block">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="top-bar-left">
+                            <div class="text">
+                                <h2>7:00 AM - 7:00 PM</h2>
+                                <p>Open Daily, Except Saturdays</p>
+                            </div>
+                            <div class="text">
+                                <h2>+254 796 550 524</h2>
+                                <p>Book Your Appointment Today!</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="top-bar-right">
+                            <div class="social">
+                                <a href=""><i class="fab fa-twitter"></i></a>
+                                <a href=""><i class="fab fa-facebook-f"></i></a>
+                                <a href=""><i class="fab fa-linkedin-in"></i></a>
+                                <a href=""><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Top Bar End -->
+
+        <!-- Nav Bar Start -->
+        <div class="navbar navbar-expand-lg bg-dark navbar-dark">
+            <div class="container-fluid">
+                <a href="index.html" class="navbar-brand">Zenmelo Haircut Services <span>X</span></a>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                    <div class="navbar-nav ml-auto">
+                        <a href="index.html" class="nav-item nav-link active">Home</a>
+                        <a href="about.html" class="nav-item nav-link">About Us</a>
+                        <a href="service.html" class="nav-item nav-link">Services</a>
+                        <a href="price.html" class="nav-item nav-link">Pricing</a>
+                        <a href="team.html" class="nav-item nav-link">Our Barbers</a>
+                        <a href="portfolio.html" class="nav-item nav-link">Gallery</a>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">More</a>
+                            <div class="dropdown-menu">
+                                <a href="blog.html" class="dropdown-item">Blog</a>
+                                <a href="single.html" class="dropdown-item">Blog Details</a>
+                            </div>
+                        </div>
+                        <a href="contact.html" class="nav-item nav-link">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Nav Bar End -->
+
+        <!-- Hero Start -->
+        <div class="hero">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-12 col-md-6">
+                        <div class="hero-text">
+                            <h1>Your Style, Our Passion</h1>
+                            <p>
+                                At Zenmelo, we don’t just cut hair – we craft confidence. Step into a world of precision, style, and unmatched expertise.
+                            </p>
+                            <button class="btn" onclick="openModal()">Book Now</button>
+
+<div class="overlay" id="overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5);"></div>
+
+<div id="bookingModal" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); background:white; padding:20px; box-shadow:0 4px 8px rgba(0,0,0,0.2); border-radius:5px; width:300px; text-align:center;">
+    <h2>Book Your Appointment</h2>
+    <form id="bookingForm">
+        <label for="barber">Select Barber:</label>
+        <select id="barber" required>
+            <option value="Barber A">Barber A</option>
+            <option value="Barber B">Barber B</option>
+        </select><br><br>
+
+        <label for="date">Date:</label>
+        <input type="date" id="date" required><br><br>
+
+        <label for="time">Time:</label>
+        <input type="time" id="time" required><br><br>
+
+        <button type="submit">Confirm Booking</button>
+    </form>
+    <button onclick="closeModal()" style="background:red; color:white; padding:5px 10px; border:none; cursor:pointer; border-radius:3px;">Close</button>
+</div>
+
+<script>
+    function openModal() {
+        document.getElementById("bookingModal").style.display = "block";
+        document.getElementById("overlay").style.display = "block";
+    }
+
+    function closeModal() {
+        document.getElementById("bookingModal").style.display = "none";
+        document.getElementById("overlay").style.display = "none";
+    }
+
+    document.getElementById("bookingForm").addEventListener("submit", function (event) {
+        event.preventDefault(); 
+
+        const barber = document.getElementById("barber").value;
+        const date = document.getElementById("date").value;
+        const time = document.getElementById("time").value;
+
+        if (!isValidDate(date)) {
+            alert("Please select a valid date (today or later).");
+            return;
+        }
+
+        if (!isValidTime(time)) {
+            alert("Please select a time between 7:00 AM and 7:00 PM.");
+            return;
+        }
+
+        alert(`Booking Details:\nBarber: ${barber}\nDate: ${date}\nTime: ${time}`);
+        closeModal();
+    });
+
+    function isValidDate(selectedDate) {
+        const today = new Date();
+        const selected = new Date(selectedDate);
+        return selected >= today;
+    }
+
+    function isValidTime(selectedTime) {
+        return selectedTime >= "07:00" && selectedTime <= "19:00";
+    }
+</script>
+
+                            </script>
+                            
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-6 d-none d-md-block">
+                        <div class="hero-image">
+                            <img src="img/hero.png" alt="Hero Image">
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="btn-play" data-toggle="modal" data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-target="#videoModal">
+                    <span></span>
+                </button>
+            </div>
+        </div>
+        <!-- Hero End -->
+
+        <!-- Video Modal Start-->
+        <div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>        
+                        <!-- 16:9 aspect ratio -->
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" src="" id="video"  allowscriptaccess="always" allow="autoplay"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+        <!-- Video Modal End -->
+
+        <!-- About Start -->
+        <div class="about">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-5 col-md-6">
+                        <div class="about-img">
+                            <img src="img/about.jpg" alt="Image">
+                        </div>
+                    </div>
+                    <div class="col-lg-7 col-md-6">
+                        <div class="section-header text-left">
+                            <p>About Zenmelo</p>
+                            <h2>25 Years of Crafting Excellence</h2>
+                        </div>
+                        <div class="about-text">
+                            <p>
+                                Since 1998, Zenmelo has been the go-to destination for men seeking premium grooming services. Our barbers are masters of their craft, blending tradition with modern trends to deliver the perfect look every time.
+                            </p>
+                            <p>
+                                We believe that a great haircut is more than just a service – it’s an experience. From the moment you walk in, you’ll feel the difference. Relax in our luxurious chairs, enjoy a hot towel treatment, and leave feeling like a new man.
+                            </p>
+                            <a class="btn" href="">Discover More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- About End -->
+
+        <!-- Service Start -->
+        <div class="service">
+            <div class="container">
+                <div class="section-header text-center">
+                    <p>Our Services</p>
+                    <h2>Premium Grooming, Tailored for You</h2>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="service-item">
+                            <div class="service-img">
+                                <img src="img/service-1.jpg" alt="Image">
+                            </div>
+                            <h3>Haircut & Styling</h3>
+                            <p>
+                                From classic cuts to modern styles, our barbers will give you the look you desire.
+                            </p>
+                            <a class="btn" href="">Learn More</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="service-item">
+                            <div class="service-img">
+                                <img src="img/service-2.jpg" alt="Image">
+                            </div>
+                            <h3>Beard Grooming</h3>
+                            <p>
+                                Precision trimming and shaping to keep your beard looking sharp and stylish.
+                            </p>
+                            <a class="btn" href="">Learn More</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="service-item">
+                            <div class="service-img">
+                                <img src="img/service-3.jpg" alt="Image">
+                            </div>
+                            <h3>Hair Color & Treatment</h3>
+                            <p>
+                                Refresh your look with our professional coloring and revitalizing treatments.
+                            </p>
+                            <a class="btn" href="">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Service End -->
+
+        <!-- Pricing Start -->
+        <div class="price">
+            <div class="container">
+                <div class="section-header text-center">
+                    <p>Our Pricing</p>
+                    <h2>Affordable Luxury for Every Gentleman</h2>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="price-item">
+                            <div class="price-img">
+                                <img src="img/price-1.jpg" alt="Image">
+                            </div>
+                            <div class="price-text">
+                                <h2>Classic Haircut</h2>
+                                <h3>ksh 150</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="price-item">
+                            <div class="price-img">
+                                <img src="img/price-2.jpg" alt="Image">
+                            </div>
+                            <div class="price-text">
+                                <h2>Beard Trim</h2>
+                                <h3>ksh 100</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="price-item">
+                            <div class="price-img">
+                                <img src="img/price-3.jpg" alt="Image">
+                            </div>
+                            <div class="price-text">
+                                <h2>Hair Color</h2>
+                                <h3>ksh 200</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="price-item">
+                            <div class="price-img">
+                                <img src="img/price-4.jpg" alt="Image">
+                            </div>
+                            <div class="price-text">
+                                <h2>Hot Towel Shave</h2>
+                                <h3>ksh 120</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Pricing End -->
+
+        <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testimonials</title>
+    <!-- Owl Carousel CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+</head>
+<body>
+    <!-- Testimonial Start -->
+    <div class="testimonial">
+        <div class="container">
+            <div class="owl-carousel testimonials-carousel">
+                <div class="testimonial-item">
+                    <img src="img/testimonial-1.jpg" alt="Image">
+                    <p>"Zenmelo is the best barber shop I’ve ever been to..."</p>
+                    <h2>John Doe</h2>
+                    <h3>Entrepreneur</h3>
+                </div>
+                <div class="testimonial-item">
+                    <img src="img/testimonial-2.jpg" alt="Image">
+                    <p>"The barbers here are true professionals..."</p>
+                    <h2>Michael Smith</h2>
+                    <h3>Software Engineer</h3>
+                </div>
+                <div class="testimonial-item">
+                    <img src="img/testimonial-3.jpg" alt="Image">
+                    <p>"I’ve been coming to Zenmelo for years..."</p>
+                    <h2>David Johnson</h2>
+                    <h3>Marketing Manager</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Testimonial End -->
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Owl Carousel JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <!-- Initialize Owl Carousel -->
+    <script>
+        $(document).ready(function () {
+            $(".testimonials-carousel").owlCarousel({
+                items: 1,
+                loop: true,
+                autoplay: true,
+                autoplayTimeout: 5000,
+                nav: true,
+                dots: true,
+                responsive: {
+                    0: { items: 1 },
+                    600: { items: 2 },
+                    1000: { items: 3 },
+                },
+            });
+        });
+    </script>
+</body>
+</html>
+        <!-- Team Start -->
+        <div class="team">
+            <div class="container">
+                <div class="section-header text-center">
+                    <p>Meet Our Barbers</p>
+                    <h2>Master Craftsmen of Style</h2>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="team-item">
+                            <div class="team-img">
+                                <img src="img/team-1.jpg" alt="Team Image">
+                            </div>
+                            <div class="team-text">
+                                <h2>Adam Phillips</h2>
+                                <p>Master Barber</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="team-item">
+                            <div class="team-img">
+                                <img src="img/team-2.jpg" alt="Team Image">
+                            </div>
+                            <div class="team-text">
+                                <h2>Dylan Adams</h2>
+                                <p>Hair Stylist</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="team-item">
+                            <div class="team-img">
+                                <img src="img/team-3.jpg" alt="Team Image">
+                            </div>
+                            <div class="team-text">
+                                <h2>Gloria Edwards</h2>
+                                <p>Beard Specialist</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="team-item">
+                            <div class="team-img">
+                                <img src="img/team-4.jpg" alt="Team Image">
+                            </div>
+                            <div class="team-text">
+                                <h2>Josh Dunn</h2>
+                                <p>Color Expert</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Team End -->
+
+        <!-- Contact Start -->
+        <div class="contact">
+            <div class="container-fluid">
+                <div class="container"> 
+                    <div class="row align-items-center">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-8">
+                            <div class="contact-form">
+                                <div id="success"></div>
+                                <form name="sentMessage" id="contactForm" novalidate="novalidate">
+                                    <div class="control-group">
+                                        <input type="text" class="form-control" id="name" placeholder="Your Name" required="required" data-validation-required-message="Please enter your name" />
+                                        <p class="help-block text-danger"></p>
+                                    </div>
+                                    <div class="control-group">
+                                        <input type="email" class="form-control" id="email" placeholder="Your Email" required="required" data-validation-required-message="Please enter your email" />
+                                        <p class="help-block text-danger"></p>
+                                    </div>
+                                    <div class="control-group">
+                                        <input type="text" class="form-control" id="subject" placeholder="Subject" required="required" data-validation-required-message="Please enter a subject" />
+                                        <p class="help-block text-danger"></p>
+                                    </div>
+                                    <div class="control-group">
+                                        <textarea class="form-control" id="message" placeholder="Message" required="required" data-validation-required-message="Please enter your message"></textarea>
+                                        <p class="help-block text-danger"></p>
+                                    </div>
+                                    <div>
+                                        <button class="btn" type="submit" id="sendMessageButton">Send Message</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Contact End -->
+
+        <!-- Blog Start -->
+        <div class="blog">
+            <div class="container">
+                <div class="section-header text-center">
+                    <p>Latest From Our Blog</p>
+                    <h2>Stay Updated with Zenmelo</h2>
+                </div>
+                <div class="owl-carousel blog-carousel">
+                    <div class="blog-item">
+                        <div class="blog-img">
+                            <img src="img/blog-1.jpg" alt="Blog">
+                        </div>
+                        <div class="blog-meta">
+                            <i class="fa fa-list-alt"></i>
+                            <a href="">Hair Trends</a>
+                            <i class="fa fa-calendar-alt"></i>
+                            <p>01-Jan-2024</p>
+                        </div>
+                        <div class="blog-text">
+                            <h2>Top Hair Trends for 2024</h2>
+                            <p>
+                                Discover the latest hair trends that will dominate 2024. From bold cuts to subtle styles, we’ve got you covered.
+                            </p>
+                            <a class="btn" href="">Read More <i class="fa fa-angle-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="blog-item">
+                        <div class="blog-img">
+                            <img src="img/blog-2
